@@ -14,7 +14,7 @@ authors = [
 ]
 description = "Tiny Asynchronous Remote Procedure calling. Code on two computers? Throw a tarp on it and done."
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.8"
 classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
@@ -36,3 +36,4 @@ Issues = "https://github.com/WarwickRSE/TARP/issues"
 [project.scripts]
 tarp-server = "tarp.dev:server"
 tarp-client = "tarp.dev:client"
+
