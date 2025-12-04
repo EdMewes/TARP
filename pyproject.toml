@@ -1,10 +1,11 @@
 [build-system]
-requires = ["setuptools >= 65.7.0"]
+# Must use a version of setuptools that supports Python 3.8
+requires = ["setuptools <= 65.7.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
 packages = ["tarp", "tarp.example", "tarp.dev"]
-package-dir = {"" = "src"}
+package-dir = { "" = "src" }
 
 [project]
 name = "tarp"
@@ -12,19 +13,23 @@ version = "0.0.1"
 authors = [
   { name="Warwick RSE", email="resource.rse@warwick.ac.uk" },
 ]
+
 description = "Tiny Asynchronous Remote Procedure calling. Code on two computers? Throw a tarp on it and done."
 readme = "README.md"
+
 requires-python = ">=3.8"
+
 classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers"
 ]
-license = { text = "Apache-2.0" }
-license-files = ["LICEN[CS]E*"]
 
-dependencies =[
+license = { file = "LICENSE" }
+
+
+dependencies = [
   "requests >= 2.31.0"
 ]
 
@@ -32,8 +37,6 @@ dependencies =[
 Homepage = "https://github.com/WarwickRSE/TARP"
 Issues = "https://github.com/WarwickRSE/TARP/issues"
 
-
 [project.scripts]
 tarp-server = "tarp.dev:server"
 tarp-client = "tarp.dev:client"
-
