@@ -503,13 +503,16 @@ class server(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(api_error('Endpoint not found'))
 
-def runServer(cls, secure=False, certfile='snakeoil.pem', keyfile='snakeoil.key', port=None, bindTo=''):
+def runServer(cls, secure=False, certfile='snakeoil.pem', keyfile='snakeoil.key', port=None, bindTo='', single_thread:bool = False):
     if secure:
         port = port or 443
     else:
         port = port or 80
     server_address = (bindTo, port)
-    httpd = ThreadedHTTPServer(server_address, cls)
+    if single_thread:
+        httpd = HTTPServer(server_address, cls)
+    else:
+        httpd = ThreadedHTTPServer(server_address, cls)
     if secure:
         httpd.socket = ssl.wrap_socket(
             httpd.socket,
